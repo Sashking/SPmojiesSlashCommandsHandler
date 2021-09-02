@@ -1,6 +1,10 @@
 {
   "name": "spmojies",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
