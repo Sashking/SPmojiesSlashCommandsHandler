@@ -2,7 +2,7 @@
 const { Client, Collection } = require("discord.js");
 
 // Client Initialisation
-const client = new Client({ partials: [ 'CHANNEL', 'MESSAGE', 'GUILD_MEMBER', 'REACTION' ], intents: [ "GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGES" ] });
+const client = new Client({ partials: [ 'CHANNEL', 'MESSAGE', 'GUILD_MEMBER', 'REACTION' ], intents: [ "GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGES", "DIRECT_MESSAGES" ] });
 module.exports = client;
 
 // Global Variables
