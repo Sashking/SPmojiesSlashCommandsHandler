@@ -5,7 +5,7 @@ const sharp = require('sharp');
 module.exports = {
     name: 'post',
     description: "Администраторская команда.",
-    userPermissions: ['ADMINISTRATOR'],
+    userPermissions: ['MANAGE_WEBHOOKS'],
 
     /**
      * @param {Client} client 
