@@ -16,7 +16,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         if (reaction.message.embeds[0].footer) embed.setFooter(reaction.message.embeds[0].footer.text);
 
         //                                         канал фотокарточек
-        reaction.message.guild.channels.cache.get("872190318496325662").send({ embeds: [ embed ] })
+        reaction.message.guild.channels.cache.get("889194282500620298").send({ embeds: [ embed ] })
             .then((msg) => {
                 msg.react("871788034641756160");
             });
