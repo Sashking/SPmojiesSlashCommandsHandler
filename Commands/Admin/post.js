@@ -136,11 +136,10 @@ module.exports = {
 
         let previewEmbed = new MessageEmbed()
             .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
-            .setTitle(`** ${variables[0]}**`)
-            .setURL(variables[2])
+            .setTitle(`**${variables[0]}**`)
             .setDescription(`
-**⮙ Скачать ⮙**\n*${variables[1]}*
-            
+*${variables[1]}*
+
 ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${variables[7] ? `*Ресурс пак:* ***${variables[7]}***` : ""}`)
             .setColor(variables[5] || "FFFFFF")
             .setImage(variables[6])
@@ -211,15 +210,24 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
                             const postEmbed = new MessageEmbed()
                                 .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
                                 .setTitle(`**${variables[0]}**`)
-                                .setURL(variables[2])
                                 .setDescription(`
-**⮙ Скачать ⮙**\n*${variables[1]}*
-                        
+*${variables[1]}*
+
 ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${variables[7] ? `*Ресурс пак:* ***${variables[7]}***` : ""}`)
                                 .setColor(variables[5])
                                 .setImage(variables[6])
 
-                            interaction.guild.channels.cache.get("840497390879506452").send({ content: '<@&842438141646340146>', embeds: [ postEmbed ] })
+                            const downloadButton = new MessageButton()
+                                .setEmoji('📩')
+                                .setLabel('Скачать эмоцию')
+                                .setStyle('LINK')
+                                .setURL(variables[2])
+
+                            const row = new MessageActionRow()
+                                .addComponents(downloadButton)
+
+
+                            interaction.guild.channels.cache.get("840497390879506452").send({ content: '<@&842438141646340146>', embeds: [ postEmbed ], components: [ row ] })
                                 .then(m => {
                                     m.react("❤");
                                 });
@@ -235,10 +243,9 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
 
                     const newEmbed = new MessageEmbed()
                         .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
-                        .setTitle(`** ${variables[0]}**`)
-                        .setURL(variables[2])
+                        .setTitle(`**${variables[0]}**`)
                         .setDescription(`
-**⮙ Скачать ⮙**\n*${variables[1]}*
+*${variables[1]}*
 
 ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${variables[7] ? `*Ресурс пак:* ***${variables[7]}***` : ""}`)
                         .setColor(variables[5] || "FFFFFF")
