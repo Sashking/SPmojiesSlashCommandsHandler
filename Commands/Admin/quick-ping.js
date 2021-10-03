@@ -46,6 +46,8 @@ module.exports = {
             .then(m => {
                 m.delete();
             });
+        
+        interaction.followUp({ content: `Канал ${targetChannel} успешно пинганут!` });
 
     }
 }
