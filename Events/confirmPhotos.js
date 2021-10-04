@@ -25,6 +25,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
             .setDescription('Вашу фотокарточку одобрили!')
             .setColor('GREEN')
         await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name).send({ embeds: [ acceptEmbed ] });
+        // client.add(await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name).id, 4);
 
         reaction.message.delete();
     } else {

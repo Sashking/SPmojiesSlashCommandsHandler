@@ -1,6 +1,8 @@
 const { MessageEmbed, Message } = require('discord.js');
 const client = require('../index');
 const Schema = require('../models/react-channels');
+const messagePointsSchema = require('../models/messagePoints');
+const messageLogsSchema = require('../models/messageLogs');
 
 client.on('messageCreate', (message) => {
     Schema.findOne({ ChannelID: message.channel.id }, (err, data) => {
@@ -30,5 +32,30 @@ client.on('messageCreate', (message) => {
                     message.reply('Ваша фотокарточка отправлена на рассмотрение!');
                 });
         }
+    // } else{
+    //     if (message.channel.id == "873997339315044392") {
+    //         new messageLogsSchema({
+    //             UserID: message.author.id,
+    //             MessageID: message.id,
+    //         }).save();
+            
+    //         messagePointsSchema.findOne({ UserID: message.author.id }, (err, data) => {
+    //             if (data) {
+    //                 data.Count++;
+    //             } else {
+    //                 data = new messagePointsSchema({
+    //                     UserID: message.author.id,
+    //                     Count: 1,
+    //                 });
+    //             }
+
+    //             if (data.Count == 20) {
+    //                 data.Count = 0;
+
+    //                 client.add(message.author.id, 10);
+    //             }
+    //             data.save();
+    //         });
+    //     }
     }
 })

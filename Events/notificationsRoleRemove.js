@@ -10,4 +10,5 @@ client.on('messageReactionRemove', async (reaction, user) => {
     //                                                     роль оповещения
     const role = reaction.message.guild.roles.cache.get("842438141646340146")
     await reaction.message.guild.members.cache.get(user.id).roles.remove(role);
+    // client.remove(user.id, 20);
 });

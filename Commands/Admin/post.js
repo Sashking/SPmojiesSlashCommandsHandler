@@ -229,7 +229,7 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
 
                             interaction.guild.channels.cache.get("840497390879506452").send({ content: '<@&842438141646340146>', embeds: [ postEmbed ], components: [ row ] })
                                 .then(m => {
-                                    m.react("❤");
+                                    m.react("845204691775914054");
                                 });
                         }, 7000)
                     }
