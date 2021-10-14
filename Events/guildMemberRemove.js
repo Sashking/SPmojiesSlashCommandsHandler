@@ -10,9 +10,11 @@ client.on('guildMemberRemove', async (member) => {
             roles.push(r);
     });
 
-    new roleSaveSchema({
-        GuildID: member.guild.id,
-        UserID: member.user.id,
-        Roles: roles
-    }).save()
+    if (roles) {
+        new roleSaveSchema({
+            GuildID: member.guild.id,
+            UserID: member.user.id,
+            Roles: roles
+        }).save()
+    }
 })

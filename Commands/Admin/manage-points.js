@@ -1,5 +1,4 @@
-const { CommandInteraction, Client, MessageEmbed } = require('discord.js');
-const emojiSchema = require('../models/react-channels');
+const { CommandInteraction, Client } = require('discord.js');
 
 module.exports = {
     name: 'manage-points',
@@ -49,16 +48,16 @@ module.exports = {
 
         const [ userID, mode, amount ] = args;
 
-        const targetUser = client.users.cache.get(userID)
+        const targetUser = client.users.cache.get(userID);
 
-        if (mode == 'add') {
-            client.add(userID, amount);
+        if (mode === 'add') {
+            await client.add(userID, amount);
             return interaction.followUp({ content: `Участнику ${ targetUser } успешно начислено **${ amount }** баллов.` });
-        } else if (mode == 'remove') {
-            client.remove(userID, amount);
+        } else if (mode === 'remove') {
+            await client.remove(userID, amount);
             return interaction.followUp({ content: `У участника ${ targetUser } успешно убрано **${ amount }** баллов.` });
         } else {
-            client.set(userID, amount);
+            await client.set(userID, amount);
             return interaction.followUp({ content: `Балы участника ${ targetUser } успешно установлены на **${ amount }** баллов.` });
         }
 

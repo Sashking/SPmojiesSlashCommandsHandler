@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const client = require('../index');
+const logsSchema = require('../models/messageLogs');
 
 client.on('messageReactionAdd', async (reaction, user) => {
     //                           канал проверка фотокарточек
@@ -8,6 +9,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if (user.id === "862636099423698944") return;
 
     if (reaction.emoji.id === "845202585299976212") {
+        const originalAuthor = await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name);
         const embed = new MessageEmbed()
             .setAuthor(reaction.message.embeds[0].author.name, reaction.message.embeds[0].author.iconURL)
             .setImage(reaction.message.embeds[0].image.url)
@@ -17,23 +19,31 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
         //                                         канал фотокарточек
         reaction.message.guild.channels.cache.get("889194282500620298").send({ embeds: [ embed ] })
-            .then((msg) => {
+            .then(async (msg) => {
                 msg.react("871788034641756160");
+
+                const data = new logsSchema({
+                    UserID: originalAuthor.id,
+                    MessageID: msg.id,
+                }).save();
+
+                await client.add(originalAuthor.id, 4);
             });
 
         const acceptEmbed = new MessageEmbed()
             .setDescription('Вашу фотокарточку одобрили!')
             .setColor('GREEN')
-        await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name).send({ embeds: [ acceptEmbed ] });
-        // client.add(await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name).id, 4);
+
+        originalAuthor.send({ embeds: [ acceptEmbed ] });
 
         reaction.message.delete();
     } else {
+        const originalAuthor = await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name);
 
         const declineEmbed = new MessageEmbed()
             .setDescription('Вашу фотокарточку отклонили!')
             .setColor('RED')
-        await (await reaction.message.guild.members.fetch()).find(m => m.user.tag === reaction.message.embeds[0].author.name).send({ embeds: [ declineEmbed ] });
+        originalAuthor.send({ embeds: [ declineEmbed ] });
 
         reaction.message.delete();
     }

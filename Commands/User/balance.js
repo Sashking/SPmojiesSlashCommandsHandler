@@ -1,9 +1,9 @@
 const { CommandInteraction, Client, MessageEmbed } = require('discord.js');
-const emojiSchema = require('../models/react-channels');
+const emojiSchema = require('../../models/react-channels');
 
 module.exports = {
     name: 'balance',
-    description: "Посмотрите свой балланс баллов.",
+    description: "Посмотрите свой (или чужой) балланс баллов.",
     options: [
         {
             name: 'участник',

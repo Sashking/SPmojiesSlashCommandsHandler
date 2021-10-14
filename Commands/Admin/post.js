@@ -58,7 +58,7 @@ module.exports = {
         }
 
         const currentPageVariable = (i, variable) => {
-            if (i == 5) {
+            if (i === 5) {
                 switch(variable) {
                     case "1":
                         variables[i] = "c73737";
@@ -79,10 +79,10 @@ module.exports = {
                         variables[i] = "98b834";
                         break;
                 }
-            } else if (i == 2 || i == 6) {
+            } else if (i === 2 || i === 6) {
                 if (!String(variable).startsWith("http")) return;
                 else variables[i] = variable;
-            } else if (i == 7) {
+            } else if (i === 7) {
                 if (variable === "КСЭПСП") variables[i] = "[" + variable + "](https://youtu.be/KzOrAt9-Sus)";
                 else variables[i] = variable;
             } else {
@@ -126,16 +126,14 @@ module.exports = {
 
                         interaction.channel.send({ files: [ file ] })
                             .then((m) => {
-                                const url = m.attachments.first().url;
-                                variables[6] = url;
-                                return;
+                                variables[6] = m.attachments.first().url;
                             });
                     });
             });
         }
 
         let previewEmbed = new MessageEmbed()
-            .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
+            .setAuthor(`Автор: spmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
             .setTitle(`**${variables[0]}**`)
             .setDescription(`
 *${variables[1]}*
@@ -195,7 +193,7 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
                         messageCollector.stop();
                         preview.delete();
                         msg.delete();
-                        return;
+
                     } else if (i.customId === 'send') {
                         if (!variables[0] || !variables[1] || !variables[2] || !variables[3] || !variables[5] || !variables[6]) return reaction.users.remove(user.id);
 
@@ -208,7 +206,7 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
 
                         setTimeout(function() {
                             const postEmbed = new MessageEmbed()
-                                .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
+                                .setAuthor(`Автор: spmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
                                 .setTitle(`**${variables[0]}**`)
                                 .setDescription(`
 *${variables[1]}*
@@ -242,7 +240,7 @@ ${variables[4] ? `Автор идеи: **${variables[4]}** :heart:\n` : ""}${var
                     currentPageVariable(currentPageIndex, m.content);
 
                     const newEmbed = new MessageEmbed()
-                        .setAuthor(`Автор: SPmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
+                        .setAuthor(`Автор: spmojies - ${variables[3]}`, 'https://media.discordapp.net/attachments/829634848485539851/867635140322787348/9.png')
                         .setTitle(`**${variables[0]}**`)
                         .setDescription(`
 *${variables[1]}*
