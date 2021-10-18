@@ -2,7 +2,7 @@ const { CommandInteraction, Client, MessageEmbed, MessageButton, MessageActionRo
 
 module.exports = {
     name: 'shop',
-    description: "Список товаров SPmojies.",
+    description: "Список товаров spmojies.",
 
     /**
      * @param {Client} client 

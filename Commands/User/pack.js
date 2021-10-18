@@ -2,7 +2,7 @@ const { CommandInteraction, Client, MessageAttachment } = require('discord.js');
 
 module.exports = {
     name: 'pack',
-    description: "Архив всех эмоций SPmojies.",
+    description: "Скачать пак эмоций который вышли на данный момент.",
 
     /**
      * @param {Client} client 
